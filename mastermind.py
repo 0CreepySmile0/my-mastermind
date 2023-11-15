@@ -37,15 +37,17 @@ class Mastermind:
         self.__position = other
 
     def check(self, user_input):
-        self.__hint = ""
+        asterisk = 0
+        o = 0
         dup = ""
         for i in range(len(user_input)):
-            if user_input[i] == self.__puzzle[i]:
-                self.__hint = "*" + self.__hint
-            elif user_input[i] in self.__puzzle and dup.count(user_input[i]) < \
-                    self.__puzzle.count(user_input[i]):
-                self.__hint += "o"
             dup += user_input[i]
+            if user_input[i] == self.__puzzle[i]:
+                asterisk += 1
+            if user_input[i] in self.__puzzle and dup.count(user_input[i]) <= \
+                    self.__puzzle.count(user_input[i]):
+                o += 1
+        self.__hint = "*"*asterisk + "o"*(o - asterisk)
         return self.__hint
 
     def play(self):
@@ -63,7 +65,6 @@ class Mastermind:
                 guess = input("What is your guess?: ")
             print(f"your guess is {guess}")
             print(self.check(guess))
-            print(self.__puzzle)
             print()
             self.__round += 1
             self.__hint = self.check(guess)
