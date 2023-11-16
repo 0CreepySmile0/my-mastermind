@@ -76,15 +76,12 @@ print("Welcome to mastermind game, Let's start!")
 q = ""
 while q != "No":
     colors = input("How many colors? (1~10): ")
-    while colors != "1" and colors != "2" and colors != "3" and colors != "4" and colors != "5" and\
-            colors != "6" and colors != "7" and colors != "8" and colors != "9" and colors != "10":
+    while colors not in [str(i) for i in range(1, 11)]:
         print("Number of colors must be an integer between 1~10")
         colors = input("How many colors? (1~10): ")
     colors = int(colors)
     positions = input("How many positions? (1~10): ")
-    while positions != "1" and positions != "2" and positions != "3" and positions != "4" and\
-            positions != "5" and positions != "6" and positions != "7" and positions != "8" and\
-            positions != "9" and positions != "10":
+    while positions not in [str(i) for i in range(1, 11)]:
         print("Number of colors must be an integer between 1~10")
         positions = input("How many colors? (1~10): ")
     positions = int(positions)
